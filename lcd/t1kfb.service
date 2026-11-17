@@ -1,0 +1,13 @@
+[Unit]
+Description=Toshiba T1000LE LCD driver (GPIO bit-bang)
+After=local-fs.target
+
+[Service]
+# Adjust options once the panel is verified with test patterns.
+ExecStart=/usr/local/bin/t1kfb --source fb:/dev/fb0 --cpu 3
+Restart=on-failure
+RestartSec=2
+Nice=-20
+
+[Install]
+WantedBy=multi-user.target
